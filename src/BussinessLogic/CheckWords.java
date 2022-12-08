@@ -36,8 +36,8 @@ public class CheckWords {
 		}
 
 		TestWord = words.get(0);
-		Text.connection_FUN(words);
-		Text.connection(words);
+		Text.FetchingWords(words);
+		Text.FetchingMutants(words);
 
 	}
 
@@ -77,8 +77,8 @@ public class CheckWords {
 
 		}
 
-		Text.connection_FUN(word2);
-		Text.connection(word2);
+		Text.FetchingWords(word2);
+		Text.FetchingMutants(word2);
 
 	}
 
@@ -164,7 +164,7 @@ public class CheckWords {
 
 	public String Word(String Word) {
 
-		return Text.connection3(Word);
+		return Text.FetchingAlternativeWords(Word);
 	}
 
 	public boolean check_List() {
