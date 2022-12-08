@@ -20,11 +20,11 @@ public class Text_Read {
 		errorlist.clear();
 
 		try {
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker", "root", "");
+			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker", "root", "");
 			String sqlQuery1 = "SELECT * FROM word WHERE words LIKE '" + getWord + "'";
 			
 			for (int i = 0; i < getWord.size(); i++) {
-				PreparedStatement ps = con
+				PreparedStatement ps = connectionString
 						.prepareStatement(sqlQuery1);
 
 				ResultSet rs = ps.executeQuery();
@@ -37,7 +37,7 @@ public class Text_Read {
 
 				}
 			}
-			con.close();
+			connectionString.close();
 
 		} catch (SQLException e) {
 			System.out.println(e);
