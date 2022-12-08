@@ -79,8 +79,7 @@ public class Text_Read {
 		int id = 0;
 		String getWords = null;
 		try {
-			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker",
-					"root", "");
+			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker", "root", "");
 			String sqlQuery3 = "SELECT * FROM mutants WHERE Word LIKE '" + word + "'";
 			PreparedStatement preparedStatement = connectionString.prepareStatement(sqlQuery3);
 
@@ -90,7 +89,7 @@ public class Text_Read {
 				id = (int) executeQuery.getObject("F_Key");
 
 			} else {
-
+				
 			}
 			String sqlQuery4 = "SELECT * FROM word WHERE word_id = '" + id + "'";
 
