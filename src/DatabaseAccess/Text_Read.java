@@ -16,20 +16,20 @@ public class Text_Read {
 	public static ArrayList<String> errorlist = new ArrayList<String>();
 	public static ArrayList<String> errorlist2 = new ArrayList<String>();
 
-	public void connection_FUN(ArrayList getWord) {
+	public void FetchingWords(ArrayList getWord) {
 		errorlist.clear();
 
 		try {
-			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker", "root", "");
+			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker",
+					"root", "");
 			String sqlQuery1 = "SELECT * FROM word WHERE words LIKE '" + getWord + "'";
-			
+
 			for (int i = 0; i < getWord.size(); i++) {
-				PreparedStatement ps = connectionString
-						.prepareStatement(sqlQuery1);
+				PreparedStatement preparedstatement = connectionString.prepareStatement(sqlQuery1);
 
-				ResultSet rs = ps.executeQuery();
+				ResultSet executeQuery = preparedstatement.executeQuery();
 
-				if (rs.next()) {
+				if (executeQuery.next()) {
 
 				} else {
 
@@ -45,20 +45,20 @@ public class Text_Read {
 
 	}
 
-	public void connection(ArrayList words) {
+	public void FetchingMutants(ArrayList words) {
 		errorlist2.clear();
 
 		try {
-			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker", "root", "");
+			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker",
+					"root", "");
 
-			
 			for (int i = 0; i < words.size(); i++) {
 				String sqlQuery2 = "SELECT * FROM mutants WHERE Word LIKE '" + words.get(i) + "'";
-				PreparedStatement ps = connectionString.prepareStatement(sqlQuery2);
+				PreparedStatement preparedstatement = connectionString.prepareStatement(sqlQuery2);
 
-				ResultSet rs = ps.executeQuery();
+				ResultSet executeQuery = preparedstatement.executeQuery();
 
-				if (rs.next()) {
+				if (executeQuery.next()) {
 
 					errorlist2.add((String) words.get(i));
 
@@ -74,42 +74,43 @@ public class Text_Read {
 
 	}
 
-	public String connection3(String word) {
+	public String FetchingAlternativeWords(String word) {
 
 		int id = 0;
-		String Nword = null;
+		String getWords = null;
 		try {
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker", "root", "");
+			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker",
+					"root", "");
 			String sqlQuery3 = "SELECT * FROM mutants WHERE Word LIKE '" + word + "'";
-			PreparedStatement ps = con.prepareStatement(sqlQuery3);
+			PreparedStatement preparedStatement = connectionString.prepareStatement(sqlQuery3);
 
-			ResultSet rs = ps.executeQuery();
+			ResultSet executeQuery = preparedStatement.executeQuery();
 
-			if (rs.next()) {
-				id = (int) rs.getObject("F_Key");
+			if (executeQuery.next()) {
+				id = (int) executeQuery.getObject("F_Key");
 
 			} else {
 
 			}
 			String sqlQuery4 = "SELECT * FROM word WHERE word_id = '" + id + "'";
-			
-			PreparedStatement ps1 = con.prepareStatement(sqlQuery4);
 
-			ResultSet rs1 = ps1.executeQuery();
+			PreparedStatement statement = connectionString.prepareStatement(sqlQuery4);
 
-			if (rs1.next()) {
+			ResultSet executeQuery1 = statement.executeQuery();
 
-				Nword = (String) rs1.getObject("words");
+			if (executeQuery1.next()) {
+
+				getWords = (String) executeQuery1.getObject("words");
 
 			}
 
-			con.close();
+			connectionString.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return Nword;
+		return getWords;
 	}
 
 	public ArrayList<String> ErrorList() {
