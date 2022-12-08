@@ -16,15 +16,16 @@ public class Text_Read {
 	public static ArrayList<String> errorlist = new ArrayList<String>();
 	public static ArrayList<String> errorlist2 = new ArrayList<String>();
 
-	public void connection_FUN(ArrayList words) {
+	public void connection_FUN(ArrayList getWord) {
 		errorlist.clear();
 
 		try {
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker", "root", "");
-
-			for (int i = 0; i < words.size(); i++) {
+			String sqlQuery1 = "SELECT * FROM word WHERE words LIKE '" + getWord + "'";
+			
+			for (int i = 0; i < getWord.size(); i++) {
 				PreparedStatement ps = con
-						.prepareStatement("SELECT * FROM word WHERE words LIKE '" + words.get(i) + "'");
+						.prepareStatement(sqlQuery1);
 
 				ResultSet rs = ps.executeQuery();
 
@@ -32,7 +33,7 @@ public class Text_Read {
 
 				} else {
 
-					errorlist.add((String) words.get(i));
+					errorlist.add((String) getWord.get(i));
 
 				}
 			}
@@ -50,9 +51,10 @@ public class Text_Read {
 		try {
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker", "root", "");
 
+			
 			for (int i = 0; i < words.size(); i++) {
-				PreparedStatement ps = con
-						.prepareStatement("SELECT * FROM mutants WHERE Word LIKE '" + words.get(i) + "'");
+				String sqlQuery2 = "SELECT * FROM mutants WHERE Word LIKE '" + words.get(i) + "'";
+				PreparedStatement ps = con.prepareStatement(sqlQuery2);
 
 				ResultSet rs = ps.executeQuery();
 
@@ -78,8 +80,8 @@ public class Text_Read {
 		String Nword = null;
 		try {
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker", "root", "");
-
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM mutants WHERE Word LIKE '" + word + "'");
+			String sqlQuery3 = "SELECT * FROM mutants WHERE Word LIKE '" + word + "'";
+			PreparedStatement ps = con.prepareStatement(sqlQuery3);
 
 			ResultSet rs = ps.executeQuery();
 
@@ -89,8 +91,9 @@ public class Text_Read {
 			} else {
 
 			}
-
-			PreparedStatement ps1 = con.prepareStatement("SELECT * FROM word WHERE word_id = '" + id + "'");
+			String sqlQuery4 = "SELECT * FROM word WHERE word_id = '" + id + "'";
+			
+			PreparedStatement ps1 = con.prepareStatement(sqlQuery4);
 
 			ResultSet rs1 = ps1.executeQuery();
 
