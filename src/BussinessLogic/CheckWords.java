@@ -16,15 +16,19 @@ import DatabaseAccess.Text_Read;
 public class CheckWords {
 
 	public static String TestWord;
+
 	static Text_Read Text = new Text_Read();
 	StringBuilder TextFiled = new StringBuilder();
+
 	public ArrayList<String> errorlist = Text.ErrorList();
 	public ArrayList<String> errorlist2 = Text.ErrorList2();
 
 	public void String_Breaker(String textArea) {
 		ArrayList<String> words = new ArrayList<String>();
+
 		BreakIterator breakIter = BreakIterator.getWordInstance();
 		breakIter.setText(textArea);
+
 		int last = breakIter.first();
 		while (BreakIterator.DONE != last) {
 			int first = last;
@@ -44,9 +48,12 @@ public class CheckWords {
 	public void String_Breaker2(String textArea, String Word, String newWord) {
 		ArrayList<String> words = new ArrayList<String>();
 		ArrayList<String> word2 = new ArrayList<String>();
+
 		BreakIterator breakIter = BreakIterator.getWordInstance();
 		breakIter.setText(textArea);
+
 		int last = breakIter.first();
+
 		while (BreakIterator.DONE != last) {
 			int first = last;
 			last = breakIter.next();
@@ -64,7 +71,6 @@ public class CheckWords {
 
 			} else {
 				word2.add(words.get(i));
-
 			}
 
 		}
@@ -85,8 +91,6 @@ public class CheckWords {
 	public void setTextArea(JTextArea textArea_1) {
 		String Str = TextFiled.toString();
 		textArea_1.setText(Str);
-		;
-
 	}
 
 	public void Hilight(JTextArea textArea_1, int h) {
@@ -122,6 +126,7 @@ public class CheckWords {
 				for (int i = 0; i < errorlist.size(); i++) {
 					Highlighter highlighter = textArea_1.getHighlighter();
 					HighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.pink);
+					
 					int p0 = textArea_1.getText().indexOf(errorlist.get(i));
 					int p1 = p0 + errorlist.get(i).length();
 
@@ -147,8 +152,10 @@ public class CheckWords {
 			for (int i = 0; i < errorlist2.size(); i++) {
 				Highlighter highlighter = textArea_1.getHighlighter();
 				HighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.blue);
+				
 				int p0 = textArea_1.getText().indexOf(errorlist2.get(i));
 				int p1 = p0 + errorlist2.get(i).length();
+				
 				box.addItem(errorlist2.get(i));
 				try {
 
