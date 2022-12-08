@@ -49,12 +49,12 @@ public class Text_Read {
 		errorlist2.clear();
 
 		try {
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker", "root", "");
+			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker", "root", "");
 
 			
 			for (int i = 0; i < words.size(); i++) {
 				String sqlQuery2 = "SELECT * FROM mutants WHERE Word LIKE '" + words.get(i) + "'";
-				PreparedStatement ps = con.prepareStatement(sqlQuery2);
+				PreparedStatement ps = connectionString.prepareStatement(sqlQuery2);
 
 				ResultSet rs = ps.executeQuery();
 
@@ -66,7 +66,7 @@ public class Text_Read {
 
 				}
 			}
-			con.close();
+			
 
 		} catch (SQLException e) {
 			System.out.println(e);
