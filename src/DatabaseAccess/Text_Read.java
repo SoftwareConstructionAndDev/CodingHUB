@@ -40,7 +40,7 @@ public class Text_Read {
 			connectionString.close();
 
 		} catch (SQLException e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 
 	}
@@ -106,7 +106,7 @@ public class Text_Read {
 			con.close();
 
 		} catch (SQLException e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 
 		return Nword;
