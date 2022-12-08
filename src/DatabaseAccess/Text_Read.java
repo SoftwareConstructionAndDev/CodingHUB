@@ -66,7 +66,7 @@ public class Text_Read {
 
 				}
 			}
-			
+			connectionString.close();
 
 		} catch (SQLException e) {
 			System.out.println(e);
