@@ -32,9 +32,7 @@ public class Hilight extends JFrame {
 	JComboBox comboBox;
 	private JComboBox comboBox_1;
 
-	/**
-	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -48,15 +46,13 @@ public class Hilight extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public Hilight() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 990, 666);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(173, 216, 230));
-		contentPane.setForeground(Color.PINK);
+		contentPane.setBackground(new Color(241, 249 ,130));
+		contentPane.setForeground(new Color(150, 150 ,150));
 		contentPane.setBorder(UIManager.getBorder("DesktopIcon.border"));
 
 		setContentPane(contentPane);
@@ -66,7 +62,7 @@ public class Hilight extends JFrame {
 
 		Scoll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		Scoll.setViewportBorder(new LineBorder(new Color(0, 0, 0), 1, true));
-		Scoll.setBounds(71, 109, 679, 183);
+		Scoll.setBounds(71, 70, 679, 153);
 		contentPane.add(Scoll);
 		Scoll.setViewportView(textArea);
 		getContentPane().add(Scoll);
@@ -95,13 +91,13 @@ public class Hilight extends JFrame {
 						comboBox_1.addItem(Nword);
 
 					} else {
-						JOptionPane.showMessageDialog(null, "No Error Found 👌");
+						JOptionPane.showMessageDialog(null, "Text is Clean !");
 					}
 				}
 			}
 		});
 
-		btnNewButton.setBounds(760, 246, 125, 47);
+		btnNewButton.setBounds(71, 230, 125, 47);
 		contentPane.add(btnNewButton);
 
 		scrollPane = new JScrollPane();
@@ -116,7 +112,7 @@ public class Hilight extends JFrame {
 
 		JLabel lblNewLabel = new JLabel("Spell Checker");
 		lblNewLabel.setFont(new Font("Snap ITC", Font.BOLD, 26));
-		lblNewLabel.setBounds(299, 37, 249, 62);
+		lblNewLabel.setBounds(299, 10, 249, 62);
 		contentPane.add(lblNewLabel);
 
 		JLabel lblResult = new JLabel("Result");
@@ -161,7 +157,7 @@ public class Hilight extends JFrame {
 					obj.Hilight2(textArea_1, comboBox);
 
 				} else {
-					JOptionPane.showMessageDialog(null, "No Error Found 👌");
+					JOptionPane.showMessageDialog(null, "Text is Clean !");
 				}
 
 			}
