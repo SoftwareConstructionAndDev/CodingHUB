@@ -2,6 +2,8 @@ package BussinessLogic;
 
 import java.util.LinkedList;
 
+import javax.swing.JOptionPane;
+
 import DatabaseAccess.Data_Insertor;
 
 public class makeMutant {
@@ -14,85 +16,23 @@ public class makeMutant {
 	  
 	  public void Controller() {
 		  
-		  Generate_Mutant();
-			Insert();
+		  allWordsMutants();
 	  }
 	  
 	
 	
-	public static void Mutant(String[] Arr1,String[] Arr2) {
+	
+public static String Generate_Mutant(String word) {
 		
-		LinkedList W_L1 = new LinkedList();
-		  W_L1=D.GetData();
-			LinkedList K_L1 = new LinkedList();
-			 K_L1=D.ReturnKey();
+		String[] Arr1 = new String[29];
 		
-		int W=0;
-		while(W<W_L1.size())
-		{
-		String st=(String) W_L1.get(W);
-		String[] CH = st.split("(?!^)");
-		int K=(int) K_L1.get(W);
-		LinkedList word_list = new LinkedList();
-		
-		for(int i=0;i<CH.length;i++) {
-			word_list.addLast(CH[i]);
-		}
-		int Ar=0;
-		while(Ar<Arr1.length) {
-			String Nw="";
-			for(int c=0;c<word_list.size();c++) {
-			if(word_list.get(c).equals(Arr1[Ar])) {
-				for(int h=0;h<CH.length;h++) {
-					if(h==c) {
-						Nw+=Arr2[Ar];
-					}
-					else {
-						Nw+=(String) word_list.get(h);
-					
-					}
-				}
-			}
-		}
-		
-		    if(check(Nw)) {
-		    	Word_List.addLast(Nw);
-		    	Key_List.addLast(K);
-			Nw="";
-		    }
-		    
-		    Ar++;
-			}
-		W++;
-	}
-		
-		
-	}
-	static LinkedList Word_List = new LinkedList();
-
-	public LinkedList Mut() {
-		
-		return Word_List;
-	}
-	public LinkedList Key() {
-		return Key_List;
-	}
-	public static boolean check(String Nw) {
-		if(Nw.isEmpty()) {
-			return false;
-		}
-		else {
-			return true;
-		}
-		
-	}
-	public void Insert() {
-		  
-		  D.Insert();
-	  }
-public static void Generate_Mutant() {
-		
-		String[] Arr1 = new String[18];
+		//ا    آ
+		//ب    بھ    پ    پھ    ت    تھ    ٹ    ٹھ    ث
+		//ج    جھ    چ    چھ    ح    خ
+		//د    دھ    ڈ    ڈھ    ذ    ر    رھ    ڑ    ڑھ    ز    ژ
+		//س    ش    ص    ض    ط    ظ    ع    غ    ف    ق
+		//ک    کھ    گ    گھ    ل    لھ    م    مھ
+		//ن    نھ    ں    نھ    و    وھ    ہ    ۃ    ء    ی    یھ    ے	 
 		
 		Arr1[0]=("س");   
 		Arr1[1]=("ص");  
@@ -108,12 +48,23 @@ public static void Generate_Mutant() {
 		Arr1[11]=("ط");  
 		Arr1[12]=("ک");  
 		Arr1[13]=("ق");  
-		Arr1[14]=("ح");   
+		Arr1[14]=("ح");            
 		Arr1[15]=("ہ");  
 		Arr1[16]=("ز");   
 		Arr1[17]=("ذ");  
+		Arr1[18] ="ب";
+		Arr1[19] =("پ");
+		Arr1[20]=(" ٹ");
+		Arr1[21]=("د");
+		Arr1[22]=("ن");
+		Arr1[23]=("و");
+		Arr1[24]=("ی");
+		Arr1[25]=("ل");
+		Arr1[26]=("چ");
+		Arr1[27]=("ج");
+		Arr1[28]=("م");
 		
-		String[] Arr2 = new String[18];
+		String[] Arr2 = new String[29];
 		
 		Arr2[0]=("ص");
 		Arr2[1]=("س");
@@ -133,9 +84,86 @@ public static void Generate_Mutant() {
 		Arr2[15]=("ح");
 		Arr2[16]=("ذ");
 		Arr2[17]=("ز"); 
+		Arr2[18]=("بھ");
+		Arr2[19]=(" پھ");
+		Arr2[20]=("ٹھ");
+		Arr2[21]=("دھ");
+		Arr2[22]=("نھ");
+		Arr2[23]=("وھ");
+		Arr2[24]=(" یھ");
+		Arr2[25]=(" لھ");
+		Arr2[26]=("چھ");
+		Arr2[27]=("جھ");
+		Arr2[28]=("مھ");
 		
-		Mutant(Arr1,Arr2);
+		System.out.println("Word : "+ word);
+		//Mutant(Arr1,Arr2);
+		return generateMutant(word,Arr1,Arr2);
 		   
+	}
+
+	private static int getIndex(char word, String []arr) {
+		String ch = Character.toString(word);
+		for(int i=0; i<arr.length; i++) {
+			if(ch.equals(arr[i])) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	public static String getReplaceable(String word,String []arr1) {
+		String rep = "";
+		char []alpha = word.toCharArray() ;
+		for(int i=0; i<alpha.length; i++) {
+			if(getIndex(alpha[i],arr1)!= -1) {
+				rep+=alpha[i];
+			}
+		}
+		return rep;
+	}
+	public static String generateMutant(String word,String []arr1, String []arr2) {
+		String replaceable = getReplaceable (word,arr1);
+		String result="";
+		int index=0;
+		 int len = replaceable.length();  
+	        int temp = 0;   
+	        String subset[] = new String[len*(len+1)/2];  
+	        for(int i = 0; i < len; i++) {  
+	            for(int j = i; j < len; j++) {  
+	                subset[temp] = replaceable.substring(i, j+1);  
+	                temp++;  
+	            }  
+	        }  
+		String mut="";
+		for(int i=0; i<subset.length; i++) {
+			char []replace = subset[i].toCharArray();
+			mut = word;
+			for(int j=0; j<replace.length; j++ ) {
+				index = getIndex(replace[j], arr1);
+				mut = mut.replace(arr1[index], arr2[index]);
+			}
+			result = result+" "+ mut;
+		}
+		System.out.println("Mutants : "+result);
+		return result;
+	}
+	public void allWordsMutants() {
+		LinkedList W_L1 = new LinkedList();
+		  W_L1=D.GetData();
+			LinkedList K_L1 = new LinkedList();
+			 K_L1=D.ReturnKey();
+		
+		int w=0;
+		String word;
+		while(w<W_L1.size())
+		{
+			word = (String) W_L1.get(w);
+			D.insertMutant(Generate_Mutant(word));
+			w++;
+			
+		}
+	      JOptionPane.showMessageDialog(null,"Mutants Inserted Succesfully into Database"); 
+
 	}
 
 }
