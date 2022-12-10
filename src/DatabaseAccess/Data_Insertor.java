@@ -25,7 +25,7 @@ public class Data_Insertor {
 
 
 			if (!con.isClosed()) {
-				PreparedStatement ps = con.prepareStatement("SELECT * from words");
+				PreparedStatement ps = con.prepareStatement("SELECT * from word");
 
 				ResultSet rs = ps.executeQuery();
 

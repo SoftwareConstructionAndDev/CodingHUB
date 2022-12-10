@@ -25,7 +25,7 @@ public class Text_Read {
 			
 
 			for (int i = 0; i < getWord.size(); i++) {
-				String sqlQuery1 = "SELECT * FROM words WHERE word LIKE '" + getWord.get(i) + "'";
+				String sqlQuery1 = "SELECT * FROM word WHERE words LIKE '" + getWord.get(i) + "'";
 				PreparedStatement preparedstatement = connectionString.prepareStatement(sqlQuery1);
 
 				ResultSet executeQuery = preparedstatement.executeQuery();
