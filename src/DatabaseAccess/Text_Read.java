@@ -8,9 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Text_Read {
-	static String Title;
-	static String Author;
-	static String Paragraph;
+
 	int id;
 
 	public static ArrayList<String> errorlist = new ArrayList<String>();
@@ -20,9 +18,8 @@ public class Text_Read {
 		errorlist.clear();
 
 		try {
-			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/aqsababar",
-					"root", "");
-			
+			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/aqsababar", "root",
+					"");
 
 			for (int i = 0; i < getWord.size(); i++) {
 				String sqlQuery1 = "SELECT * FROM word WHERE words LIKE '" + getWord.get(i) + "'";
@@ -39,7 +36,7 @@ public class Text_Read {
 				}
 			}
 			connectionString.close();
-   System.out.println(errorlist.size());
+			System.out.println(errorlist.size());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -50,11 +47,11 @@ public class Text_Read {
 		errorlist2.clear();
 
 		try {
-			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/aqsababar",
-					"root", "");
+			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/aqsababar", "root",
+					"");
 
 			for (int i = 0; i < words.size(); i++) {
-				String sqlQuery2 = "SELECT * FROM mutants WHERE Word LIKE '" + words.get(i) + "'";
+				String sqlQuery2 = "SELECT * FROM mutant WHERE Word LIKE '" + words.get(i) + "'";
 				PreparedStatement preparedstatement = connectionString.prepareStatement(sqlQuery2);
 
 				ResultSet executeQuery = preparedstatement.executeQuery();
@@ -78,39 +75,38 @@ public class Text_Read {
 	public String FetchingAlternativeWords(String word) {
 
 		int id = 0;
-		String getWords = null;
+		String Nword = null;
 		try {
-			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/aqsababar", "root", "");
-			String sqlQuery3 = "SELECT * FROM mutants WHERE Word LIKE '" + word + "'";
-			PreparedStatement preparedStatement = connectionString.prepareStatement(sqlQuery3);
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/aqsababar", "root", "");
 
-			ResultSet executeQuery = preparedStatement.executeQuery();
+			PreparedStatement preparedstatment = con.prepareStatement("SELECT * FROM mutants WHERE Word LIKE '" + word + "'");
 
-			if (executeQuery.next()) {
-				id = (int) executeQuery.getObject("F_Key");
+			ResultSet result = preparedstatment.executeQuery();
+
+			if (result.next()) {
+				id = (int) result.getObject("F_Key");
 
 			} else {
-				
-			}
-			String sqlQuery4 = "SELECT * FROM words WHERE id = '" + id + "'";
-
-			PreparedStatement statement = connectionString.prepareStatement(sqlQuery4);
-
-			ResultSet executeQuery1 = statement.executeQuery();
-
-			if (executeQuery1.next()) {
-
-				getWords = (String) executeQuery1.getObject("word");
 
 			}
 
-			connectionString.close();
+			PreparedStatement preparedstatment1 = con.prepareStatement("SELECT * FROM word WHERE word_id = '" + id + "'");
+
+			ResultSet result1 = preparedstatment1.executeQuery();
+
+			if (result1.next()) {
+
+				Nword = (String) result1.getObject("words");
+
+			}
+
+			con.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println(e);
 		}
 
-		return getWords;
+		return Nword;
 	}
 
 	public ArrayList<String> ErrorList() {
