@@ -20,7 +20,7 @@ public class Data_Insertor {
 		LinkedList word1 = new LinkedList();
 
 		try {
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker", "root", "");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/aqsababar", "root", "");
 
 			if (!con.isClosed()) {
 				PreparedStatement ps = con.prepareStatement("SELECT * from word");
@@ -53,7 +53,7 @@ public class Data_Insertor {
 		L2 = setMutant.Mut();
 
 		try {
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker", "root", "");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/aqsababar", "root", "");
 			for (int i = 0; i < L2.size(); i++) {
 
 				String Word = (String) L2.get(i);

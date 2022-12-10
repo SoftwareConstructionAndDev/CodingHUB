@@ -2,26 +2,27 @@ package Presentation;
 
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.border.LineBorder;
+import BussinessLogic.CheckWords;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.UIManager;
-import javax.swing.border.LineBorder;
 
-import BussinessLogic.CheckWords;
+import java.awt.Font;
+import javax.swing.UIManager;
 
 @SuppressWarnings("serial")
-public class Hilight extends JFrame {
+public class Hilight1 extends JFrame {
 
 	private JPanel contentPane;
 	private JTextArea textArea;
@@ -34,7 +35,7 @@ public class Hilight extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Hilight frame = new Hilight();
+					Hilight1 frame = new Hilight1();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,9 +45,9 @@ public class Hilight extends JFrame {
 	}
 
 	
-	public Hilight() {
+	public Hilight1() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 817, 360);
+		setBounds(100, 100, 990, 666);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(241, 249 ,130));
 		contentPane.setForeground(new Color(150, 150 ,150));
@@ -68,7 +69,7 @@ public class Hilight extends JFrame {
 		textArea.setTabSize(14);
 		Scoll.setViewportView(textArea);
 
-		JButton btnNewButton = new JButton("Spell Check");
+		JButton btnNewButton = new JButton("Test Paragraph");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (textArea.getText().isEmpty()) {
@@ -77,7 +78,7 @@ public class Hilight extends JFrame {
 					comboBox.removeAllItems();
 					comboBox_1.removeAllItems();
 
-					
+					textArea.setText(textArea.getText());
 					CheckWords obj = new CheckWords();
 
 					obj.String_Breaker(textArea.getText());
@@ -93,26 +94,40 @@ public class Hilight extends JFrame {
 				}
 			}
 		});
-		
-		
 
-		btnNewButton.setBounds(71, 245, 125, 47);
+		btnNewButton.setBounds(71, 230, 125, 47);
 		contentPane.add(btnNewButton);
 
-		JLabel lblNewLabel = new JLabel("Text Area Field");
-		lblNewLabel.setFont(new Font("Sitka Text", Font.BOLD, 26));
-		lblNewLabel.setBounds(299, 10, 301, 62);
+		JLabel lblNewLabel = new JLabel("Spell Checker");
+		lblNewLabel.setFont(new Font("Snap ITC", Font.BOLD, 26));
+		lblNewLabel.setBounds(299, 10, 249, 62);
 		contentPane.add(lblNewLabel);
 
+		JLabel lblResult = new JLabel("Result");
+		lblResult.setFont(new Font("Snap ITC", Font.BOLD, 26));
+		lblResult.setBounds(365, 302, 112, 47);
+		contentPane.add(lblResult);
+
+		JButton btnNewButton_1 = new JButton("Clear Fields");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(null);
+				textArea.setText(null);
+
+			}
+		});
+		btnNewButton_1.setBounds(760, 346, 125, 41);
+		contentPane.add(btnNewButton_1);
+
 		comboBox = new JComboBox();
-		comboBox.setBounds(206, 248, 125, 41);
+		comboBox.setBounds(760, 427, 125, 41);
 		contentPane.add(comboBox);
 
 		comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(341, 249, 125, 39);
+		comboBox_1.setBounds(760, 499, 125, 39);
 		contentPane.add(comboBox_1);
 
-		JButton btnNewButton_2 = new JButton("change Word");
+		JButton btnNewButton_2 = new JButton("Replace Word");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -135,15 +150,15 @@ public class Hilight extends JFrame {
 
 			}
 		});
-		btnNewButton_2.setBounds(476, 248, 125, 41);
+		btnNewButton_2.setBounds(760, 566, 125, 41);
 		contentPane.add(btnNewButton_2);
 
-		JLabel lblNewLabel_1 = new JLabel("Mutants");
-		lblNewLabel_1.setBounds(206, 233, 91, 13);
+		JLabel lblNewLabel_1 = new JLabel("Error Words");
+		lblNewLabel_1.setBounds(760, 404, 91, 13);
 		contentPane.add(lblNewLabel_1);
 
-		JLabel lblNewLabel_2 = new JLabel("Word");
-		lblNewLabel_2.setBounds(347, 233, 91, 13);
+		JLabel lblNewLabel_2 = new JLabel("Real Word");
+		lblNewLabel_2.setBounds(760, 476, 91, 13);
 		contentPane.add(lblNewLabel_2);
 
 	}

@@ -20,11 +20,12 @@ public class Text_Read {
 		errorlist.clear();
 
 		try {
-			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker",
+			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/aqsababar",
 					"root", "");
-			String sqlQuery1 = "SELECT * FROM word WHERE words LIKE '" + getWord + "'";
+			
 
 			for (int i = 0; i < getWord.size(); i++) {
+				String sqlQuery1 = "SELECT * FROM word WHERE word LIKE '" + getWord.get(i) + "'";
 				PreparedStatement preparedstatement = connectionString.prepareStatement(sqlQuery1);
 
 				ResultSet executeQuery = preparedstatement.executeQuery();
@@ -38,7 +39,7 @@ public class Text_Read {
 				}
 			}
 			connectionString.close();
-
+   System.out.println(errorlist.size());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -49,7 +50,7 @@ public class Text_Read {
 		errorlist2.clear();
 
 		try {
-			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker",
+			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/aqsababar",
 					"root", "");
 
 			for (int i = 0; i < words.size(); i++) {
@@ -79,7 +80,7 @@ public class Text_Read {
 		int id = 0;
 		String getWords = null;
 		try {
-			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/spell_checker", "root", "");
+			Connection connectionString = DriverManager.getConnection("jdbc:mysql://localhost:3306/aqsababar", "root", "");
 			String sqlQuery3 = "SELECT * FROM mutants WHERE Word LIKE '" + word + "'";
 			PreparedStatement preparedStatement = connectionString.prepareStatement(sqlQuery3);
 
@@ -91,7 +92,7 @@ public class Text_Read {
 			} else {
 				
 			}
-			String sqlQuery4 = "SELECT * FROM word WHERE word_id = '" + id + "'";
+			String sqlQuery4 = "SELECT * FROM word WHERE id = '" + id + "'";
 
 			PreparedStatement statement = connectionString.prepareStatement(sqlQuery4);
 
@@ -99,7 +100,7 @@ public class Text_Read {
 
 			if (executeQuery1.next()) {
 
-				getWords = (String) executeQuery1.getObject("words");
+				getWords = (String) executeQuery1.getObject("word");
 
 			}
 
