@@ -125,7 +125,7 @@ public class CheckWords {
 
 				for (int i = 0; i < errorlist.size(); i++) {
 					Highlighter highlighter = textArea_1.getHighlighter();
-					HighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.pink);
+					HighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.GRAY);
 					
 					int p0 = textArea_1.getText().indexOf(errorlist.get(i));
 					int p1 = p0 + errorlist.get(i).length();
@@ -151,7 +151,7 @@ public class CheckWords {
 
 			for (int i = 0; i < errorlist2.size(); i++) {
 				Highlighter highlighter = textArea_1.getHighlighter();
-				HighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.blue);
+				HighlightPainter painter = new DefaultHighlighter.DefaultHighlightPainter(Color.RED);
 				
 				int p0 = textArea_1.getText().indexOf(errorlist2.get(i));
 				int p1 = p0 + errorlist2.get(i).length();
