@@ -20,10 +20,7 @@ public class Data_Insertor {
 		LinkedList word1 = new LinkedList();
 
 		try {
-
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/aqsababar", "root", "");
-
-
 			if (!con.isClosed()) {
 				PreparedStatement ps = con.prepareStatement("SELECT * from word");
 
@@ -80,16 +77,41 @@ public class Data_Insertor {
 	
 	public LinkedList ReturnKey() {
 
-		return getValue;
+		
+		LinkedList word1 = new LinkedList();
 
+		try {
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/aqsababar", "root", "");
+			if (!con.isClosed()) {
+				PreparedStatement ps = con.prepareStatement("SELECT * from word");
+
+				ResultSet rs = ps.executeQuery();
+
+				while (rs.next()) {
+					int arr;
+					arr = (int) rs.getObject("frequency");
+
+					getValue.add((Integer) rs.getObject("word_id"));
+
+					word1.add(arr);
+
+				}
+
+				con.close();
+			} else
+				System.out.println("System fail");
+		} catch (SQLException e) {
+			System.out.println(e);
+		}
+		return (word1);
 	}
 	
-	public void insertMutant(String word) {
+	public void insertMutant(String word,int fkey) {
 		try {
 
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/aqsababar", "root", "");
 			PreparedStatement st = con
-					.prepareStatement("insert into Mutants values(" + null + ",'" + word + "'," + 1 + ")");
+					.prepareStatement("insert into Mutants values(" + null + ",'" + word + "'," + fkey + ")");
 			st.execute();
 			con.close();
 		} catch (SQLException e) {

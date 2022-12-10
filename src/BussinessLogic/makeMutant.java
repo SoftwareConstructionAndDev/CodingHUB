@@ -155,10 +155,18 @@ public static String Generate_Mutant(String word) {
 		
 		int w=0;
 		String word;
+		String [] mutant;
+		int freq;
 		while(w<W_L1.size())
 		{
 			word = (String) W_L1.get(w);
-			D.insertMutant(Generate_Mutant(word));
+			freq = (int) K_L1.get(w);
+			mutant = Generate_Mutant(word).split( " ");
+			for(int i=1; i<mutant.length; i++) {
+				
+			D.insertMutant(mutant[i],freq);
+			}
+			
 			w++;
 			
 		}
