@@ -77,7 +77,7 @@ public class Text_Read {
 		int id = 0;
 		String Nword = null;
 		try {
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo", "root", "");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/aqsababar", "root", "");
 
 			PreparedStatement preparedstatment = con.prepareStatement("SELECT * FROM mutants WHERE Word LIKE '" + word + "'");
 
