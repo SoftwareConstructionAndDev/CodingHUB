@@ -96,7 +96,7 @@ public class Text_Read {
 
 			if (result1.next()) {
 
-				Nword = (String) result1.getObject("words");
+				Nword = (String) result1.getObject("word");
 
 			}
 
