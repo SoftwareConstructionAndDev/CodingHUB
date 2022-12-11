@@ -22,7 +22,7 @@ public class Text_Read {
 					"");
 
 			for (int i = 0; i < getWord.size(); i++) {
-				String sqlQuery1 = "SELECT * FROM word WHERE words LIKE '" + getWord.get(i) + "'";
+				String sqlQuery1 = "SELECT * FROM word WHERE word LIKE '" + getWord.get(i) + "'";
 				PreparedStatement preparedstatement = connectionString.prepareStatement(sqlQuery1);
 
 				ResultSet executeQuery = preparedstatement.executeQuery();
@@ -51,7 +51,7 @@ public class Text_Read {
 					"");
 
 			for (int i = 0; i < words.size(); i++) {
-				String sqlQuery2 = "SELECT * FROM mutant WHERE Word LIKE '" + words.get(i) + "'";
+				String sqlQuery2 = "SELECT * FROM mutants WHERE Word LIKE '" + words.get(i) + "'";
 				PreparedStatement preparedstatement = connectionString.prepareStatement(sqlQuery2);
 
 				ResultSet executeQuery = preparedstatement.executeQuery();
@@ -90,7 +90,7 @@ public class Text_Read {
 
 			}
 
-			PreparedStatement preparedstatment1 = con.prepareStatement("SELECT * FROM word WHERE word_id = '" + id + "'");
+			PreparedStatement preparedstatment1 = con.prepareStatement("SELECT * FROM word WHERE w_id = '" + id + "'");
 
 			ResultSet result1 = preparedstatment1.executeQuery();
 
