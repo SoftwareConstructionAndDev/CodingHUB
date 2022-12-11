@@ -28,9 +28,9 @@ public class Data_Insertor {
 
 				while (rs.next()) {
 					String arr;
-					arr = (String) rs.getObject("words");
+					arr = (String) rs.getObject("word");
 
-					getValue.add((Integer) rs.getObject("word_id"));
+					getValue.add((Integer) rs.getObject("w_id"));
 
 					word1.add(arr);
 
@@ -89,9 +89,9 @@ public class Data_Insertor {
 
 				while (rs.next()) {
 					int arr;
-					arr = (int) rs.getObject("frequency");
+					arr = (int) rs.getObject("w_id");
 
-					getValue.add((Integer) rs.getObject("word_id"));
+					getValue.add((Integer) rs.getObject("w_id"));
 
 					word1.add(arr);
 

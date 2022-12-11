@@ -24,7 +24,7 @@ public class makeMutant {
 	
 public static String Generate_Mutant(String word) {
 		
-		String[] Arr1 = new String[29];
+		String[] Arr1 = new String[28];
 		
 		//ا    آ
 		//ب    بھ    پ    پھ    ت    تھ    ٹ    ٹھ    ث
@@ -62,9 +62,8 @@ public static String Generate_Mutant(String word) {
 		Arr1[25]=("ل");
 		Arr1[26]=("چ");
 		Arr1[27]=("ج");
-		Arr1[28]=("م");
 		
-		String[] Arr2 = new String[29];
+		String[] Arr2 = new String[28];
 		
 		Arr2[0]=("ص");
 		Arr2[1]=("س");
@@ -85,16 +84,15 @@ public static String Generate_Mutant(String word) {
 		Arr2[16]=("ذ");
 		Arr2[17]=("ز"); 
 		Arr2[18]=("بھ");
-		Arr2[19]=(" پھ");
+		Arr2[19]=("پھ");
 		Arr2[20]=("ٹھ");
 		Arr2[21]=("دھ");
 		Arr2[22]=("نھ");
 		Arr2[23]=("وھ");
-		Arr2[24]=(" یھ");
-		Arr2[25]=(" لھ");
+		Arr2[24]=("یھ");
+		Arr2[25]=("لھ");
 		Arr2[26]=("چھ");
 		Arr2[27]=("جھ");
-		Arr2[28]=("مھ");
 		
 		System.out.println("Word : "+ word);
 		//Mutant(Arr1,Arr2);
@@ -156,15 +154,15 @@ public static String Generate_Mutant(String word) {
 		int w=0;
 		String word;
 		String [] mutant;
-		int freq;
+		int id;
 		while(w<W_L1.size())
 		{
 			word = (String) W_L1.get(w);
-			freq = (int) K_L1.get(w);
+			id = (int) K_L1.get(w);
 			mutant = Generate_Mutant(word).split( " ");
 			for(int i=1; i<mutant.length; i++) {
 				
-			D.insertMutant(mutant[i],freq);
+			D.insertMutant(mutant[i],id);
 			}
 			
 			w++;
