@@ -100,7 +100,7 @@ public static String Generate_Mutant(String word) {
 		   
 	}
 
-	private static int getIndex(char word, String []arr) {
+	public static int getIndex(char word, String []arr) {
 		String ch = Character.toString(word);
 		for(int i=0; i<arr.length; i++) {
 			if(ch.equals(arr[i])) {
@@ -160,7 +160,7 @@ public static String Generate_Mutant(String word) {
 			word = (String) W_L1.get(w);
 			id = (int) K_L1.get(w);
 			mutant = Generate_Mutant(word).split( " ");
-			for(int i=1; i<mutant.length; i++) {
+			for(int i=0; i<mutant.length; i++) {
 				
 			D.insertMutant(mutant[i],id);
 			}

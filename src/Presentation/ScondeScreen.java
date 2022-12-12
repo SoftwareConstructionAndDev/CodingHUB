@@ -34,7 +34,7 @@ public class ScondeScreen  extends JFrame{
         frame.setUndecorated(true);
         frame.setSize(600,600);
         frame.setLocationRelativeTo(null);
-        frame.getContentPane().setBackground(Color.yellow);
+        frame.getContentPane().setBackground(Color.lightGray);
         frame.setVisible(true);
 
     }
