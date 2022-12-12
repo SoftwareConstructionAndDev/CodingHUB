@@ -61,6 +61,22 @@ public class Mutants_Generator extends JFrame {
 		btnNewButton.setForeground(new Color(210, 105, 30));
 		btnNewButton.setBounds(306, 246, 202, 55);
 		contentPane.add(btnNewButton);
+		
+		JButton back= new JButton("Back");
+		contentPane.add(back);
+		back.setBounds(380, 310, 70, 50);
+		back.addActionListener(new ActionListener() {
+
+	           @Override
+	           public void actionPerformed(ActionEvent e) {
+	           	
+	           	ScondeScreen sc=new ScondeScreen();
+	           sc.setVisible(true);
+	           Hilight h=new Hilight();
+	           contentPane.disable();
+	        	
+	           }
+	       });
 	}
 
 }

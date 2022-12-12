@@ -46,7 +46,7 @@ public class Hilight extends JFrame {
 	
 	public Hilight() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 817, 360);
+		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(241, 249 ,130));
 		contentPane.setForeground(new Color(150, 150 ,150));
@@ -145,6 +145,21 @@ public class Hilight extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("Word");
 		lblNewLabel_2.setBounds(347, 233, 91, 13);
 		contentPane.add(lblNewLabel_2);
+		JButton back= new JButton("Back");
+		contentPane.add(back);
+		back.setBounds(380, 290, 50, 50);
+		back.addActionListener(new ActionListener() {
 
+	           @Override
+	           public void actionPerformed(ActionEvent e) {
+	           	
+	           	ScondeScreen sc=new ScondeScreen();
+	           sc.setVisible(true);
+	           Hilight h=new Hilight();
+	           
+	        	
+	           }
+	       });
+		
 	}
 }
