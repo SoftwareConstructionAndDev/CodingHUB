@@ -5,15 +5,15 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DataBaseConnection {
-	private static DataBaseConnection dc=null;
+	private static DataBaseConnection obj=null;
 	private DataBaseConnection()
 	{
 	}
 	public static DataBaseConnection getInstance()
 	{
-		if (dc==null)
-            dc = new DataBaseConnection();
-		return dc;
+		if (obj==null)
+            obj = new DataBaseConnection();
+		return obj;
 	}
 	public  Connection getconnection() {
 		 Connection con=null;
