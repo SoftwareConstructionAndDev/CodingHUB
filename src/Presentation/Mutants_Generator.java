@@ -17,8 +17,8 @@ import BussinessLogic.makeMutant;
 public class Mutants_Generator extends JFrame {
 
 	private JPanel contentPane;
-
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -30,8 +30,6 @@ public class Mutants_Generator extends JFrame {
 			}
 		});
 	}
-
-	
 	public Mutants_Generator() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 847, 508);
@@ -77,6 +75,7 @@ public class Mutants_Generator extends JFrame {
 	        	
 	           }
 	       });
+		
 	}
 
 }

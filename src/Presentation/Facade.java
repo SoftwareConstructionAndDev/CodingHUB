@@ -4,14 +4,14 @@ package Presentation;
 import javax.swing.*;
 import java.awt.*;
 
-public class Start extends JFrame{
+public class Facade extends JFrame{
     JFrame frame;
     JLabel image=new JLabel(new ImageIcon("C:\\Users\\ADMIN\\Desktop\\Checling Project\\CodingHUB\\src\\Presentation\\logo.png"));
     JLabel text=new JLabel("ہجے چیکر");
     JProgressBar progressBar=new JProgressBar();
     JLabel message=new JLabel();
    
-    Start()
+    Facade()
     {setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         createGUI();
        addImage();
